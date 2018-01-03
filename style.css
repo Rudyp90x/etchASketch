@@ -27,7 +27,7 @@ body{
     float: left;
     padding: 15px;
     display: inline-block;
-   	margin: 1px;
+    margin: 1px;
     border: 1px solid #34495E;
 }
 
@@ -54,10 +54,11 @@ body{
 .container{
 	display: flex;
 	flex-wrap: wrap;
+	text-align: center;
 	width: 600px;
-	
+	height: 600px;
 	margin: 20px auto;
-	padding: 20px;
+	padding: 10px;
 	border: 5px solid #96281B;
 }
 

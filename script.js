@@ -1,25 +1,19 @@
-
-function createDivs(){
-	for(var i = 0; i < 16; i++){
-		const container = document.querySelector('.container');
-		const row = document.createElement('div');
-		row.classList.add('row');
-			for(var j = 0; j < 16; j++){
-				const col = document.createElement('div');
-				col.classList.add('col-1');
-				row.appendChild(col);
-			};
-		container.appendChild(row);
-					const divs = document.querySelectorAll('.col-1');
-					divs.forEach((div) => {
-						div.addEventListener('mouseenter', (e) => {
-							e.target.style.background = 'blue';
-						});
-					});
-	};
+function gridNumber(){
+	const number = prompt('Enter a number.');
+	return number;
 };
 
-function createCols(){
+function divide(a,b){
+	const number = a / b;
+	return number.toFixed(2) + '%';
+};
+
+function multiply(a,b){
+	const number = a * b;
+	return number;
+};
+
+function defaultPage(){
 	for(var i = 0; i < 256; i++){
 		const container = document.querySelector('.container');
 		const div = document.createElement('div');
@@ -35,13 +29,40 @@ function createCols(){
 	};
 };
 
+function createGrid(){
+	const userNumber = gridNumber();
+	const newWidth = divide(93, userNumber);
+	const divAmount = multiply(userNumber, userNumber);
+	
+	for(var i = 0; i < divAmount; i++){
+		const container = document.querySelector('.container');
+		const div = document.createElement('div');
+		div.classList.add('col-1');
+		container.appendChild(div);
+		const grids = document.querySelectorAll('.col-1');
+					grids.forEach((div) => {
+						div.style.width = newWidth;
+					});
+					const divs = document.querySelectorAll('.col-1');
+					divs.forEach((div) => {
+						div.addEventListener('mouseenter', (e) => {
+							e.target.style.background = '#E9D460';
+						});
+					});
+	};
+
+};
+
 const button = document.querySelector('button');
 button.addEventListener('click', (e) => {
-	//const userNumber = prompt('Enter a number.');
+		const container = document.querySelector('.container');
 		const divs = document.querySelectorAll('.col-1');
-		divs.forEach((div) => {
-			div.style.background = '#BE90D4';
-		})
+			divs.forEach((div) => {
+				const col = document.querySelector('.col-1');
+				container.removeChild(col);
+			});
+		createGrid();
+		//defaultPage();
 });
 
-window.onload = createCols;
+window.onload = defaultPage;
